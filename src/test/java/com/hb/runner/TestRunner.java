@@ -12,7 +12,7 @@ import io.cucumber.junit.CucumberOptions;
 		features = "src/test/resources/features", 
 		glue = "com.hb.steps", 
 		dryRun = false, 
-		tags = "",
+		tags = "@smoke1",
 
 		monochrome = true,
 

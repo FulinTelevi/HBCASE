@@ -43,7 +43,6 @@ public class BaseClass {
 		driver.get(website);
 
 		PageInitializer.initialize();
-
 	}
 
 	public static void tearDown() {
