@@ -4,16 +4,15 @@ import org.junit.Assert;
 
 import com.hb.utils.CommonMethods;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class MainPageValidationSteps extends CommonMethods {
 
-	@When("user navigate to hepsiburada.com and verify title of website")
-	public void user_navigate_to_hepsiburada_com_and_verify_title_of_website() {
+	@Given("user navigates to hepsiburada.com")
+	public void user_navigates_to_hepsiburada_com() {
 
-		waitForVisibility(mainPage.loginOptions);
-		
 		String expectedTitle = "Türkiye'nin En Büyük Online Alışveriş Sitesi Hepsiburada.com";
 		String actualTitle = driver.getTitle();
 
@@ -39,5 +38,7 @@ public class MainPageValidationSteps extends CommonMethods {
 		String actualTitle = driver.getTitle();
 
 		Assert.assertEquals(expectedTitle, actualTitle);
+		
+		wait(2);
 	}
 }
