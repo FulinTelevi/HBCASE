@@ -32,7 +32,6 @@ public class MainPageValidationSteps extends CommonMethods {
 	@Then("user validates title of sign in page")
 	public void user_validates_title_of_sign_in_page() {
 
-		waitForVisibility(mainPage.informationBox);
 		
 		String expectedTitle = "Üye Giriş Sayfası & Üye Ol - Hepsiburada";
 		String actualTitle = driver.getTitle();

@@ -11,10 +11,10 @@ public class UserHomePageElements extends CommonMethods {
 	@FindBy(xpath = "//div[@id='myAccount']/span/a/span[2]")
 	public WebElement myAccount;
 	
-	@FindBy(xpath = "//div[@id='SearchBoxOld_bdfa4e35-3f5a-447d-92db-3179ae226811']/div[1]/div[1]//following-sibling::div/input")
-	public WebElement searchbox;
+	@FindBy(xpath = "//div[@id= 'react-autowhatever-1']//parent::div/input")
+	public WebElement searchBox;
 
-	@FindBy(xpath = "//div[@id='SearchBoxOld_bdfa4e35-3f5a-447d-92db-3179ae226811']/div/div/div[2]")
+	@FindBy(xpath = "//div[contains(text(),'ARA')]")
 	public WebElement searchButton;
 	
 	public UserHomePageElements() {
