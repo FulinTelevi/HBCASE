@@ -11,8 +11,8 @@ import io.cucumber.junit.CucumberOptions;
 
 		features = "src/test/resources/features", 
 		glue = "com.hb.steps", 
-		dryRun = false, 
-		tags = "@smoke3",
+		dryRun =false, 
+		tags = "@smoke5",
 
 		monochrome = true,
 

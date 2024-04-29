@@ -2,7 +2,10 @@
 Feature: Product Evaluation Functionality
 
 		Background:
-			Given user navigates to hepsiburada.com 
+			Given user navigates to hepsiburada.com
+			When user moves the mouse to the sign in option and clicks on the sign in  from the options
+			And User logins with valid username and password 
+			
 			
   @smoke3
   Scenario: Select Thumbs Up or Thumbs Down and  Check Thank You Message

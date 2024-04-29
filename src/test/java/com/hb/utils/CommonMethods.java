@@ -11,10 +11,12 @@ import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -31,6 +33,26 @@ public class CommonMethods extends PageInitializer {
 	public static void click(WebElement element) {
 		waitForClickability(element);
 		element.click();
+	}
+
+	public static JavascriptExecutor getJSObject() {
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		return js;
+
+	}
+
+	public static void scrollDown(int pixel) {
+		getJSObject().executeScript("window.scrollBy(0," + pixel + ")");
+	}
+
+	public static void scrollToElement(WebElement element) {
+		getJSObject().executeScript("arguments[0].scrollIntoView(true);", element);
+	}
+
+	public static void jsClick(WebElement element) {
+
+		getJSObject().executeScript("arguments[0].click()", element);
 	}
 
 	public void searchAndSelectRandomProduct(String productName) {
@@ -61,27 +83,13 @@ public class CommonMethods extends PageInitializer {
 
 	}
 
-	public static JavascriptExecutor getJSObject() {
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		return js;
-
-	}
-
-	public static void scrollDown(int pixel) {
-		getJSObject().executeScript("window.scrollBy(0," + pixel + ")");
-	}
-
-	public static void scrollToElement(WebElement element) {
-		getJSObject().executeScript("arguments[0].scroll, null)intoView(true)", element);
-	}
-
 	public void selectRandomEvaluation() {
 
 		List<WebElement> evaluationButton = productDetailsPage.evaluationButtons;
-		Random rand = new Random();
-		WebElement randomEvaluationButton = evaluationButton.get(rand.nextInt(evaluationButton.size()));
-		click(randomEvaluationButton);
+		Random random = new Random();
+		int randomIndex = random.nextInt(evaluationButton.size());
+		WebElement randomButton = evaluationButton.get(randomIndex);
+		randomButton.click();
 	}
 
 	public boolean checkThankYouMessage() {
@@ -101,6 +109,11 @@ public class CommonMethods extends PageInitializer {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Constants.EXPLICIT_WAIT_TIME));
 		return wait;
 
+	}
+
+	public static Boolean waitUntilPageLoading() {
+		return getWaitObject().until((ExpectedCondition<Boolean>) wd -> ((JavascriptExecutor) wd)
+				.executeScript("return document.readyState").equals("complete"));
 	}
 
 	public static WebElement waitForClickability(WebElement element) {
@@ -146,5 +159,6 @@ public class CommonMethods extends PageInitializer {
 
 		return sdf.format(date);
 	}
+	
 
 }

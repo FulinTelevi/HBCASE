@@ -28,6 +28,9 @@ public class MainPageElements extends CommonMethods{
 	@FindBy(xpath = "//ul[@id='1']/li")
 	public List<WebElement> productsResult;
 	
+	@FindBy(id = "onetrust-accept-btn-handler")
+	public WebElement cookieAcceptButton;
+	
 	public MainPageElements() {
 		PageFactory.initElements(driver, this);
 	}
