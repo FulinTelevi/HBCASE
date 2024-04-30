@@ -13,6 +13,15 @@ public class ProductDetailsPageElements extends CommonMethods {
 	@FindBy(css = "span.rating-star")
 	public WebElement ratingStar;
 	
+	@FindBy(xpath = "//div[contains(@class,'paginationContentHolder')]/div/div[2]/div[2]/span")
+	public WebElement customerReviewText;
+
+	@FindBy(xpath = "//div[@id = 'puan']")
+	public WebElement rating;
+
+	@FindBy(xpath = "//div[@id='puan']//input[@type='checkbox']")
+	public List<WebElement> checkboxes;
+	
 	@FindBy(xpath = "//table[@id='css-tab-buttons']/tbody/tr/td[3]/a")
 	public WebElement reviwesTab;
 
@@ -48,7 +57,7 @@ public class ProductDetailsPageElements extends CommonMethods {
 
 	@FindBy(xpath = "//button[@id = 'addToCart']")
 	public WebElement addToCart;
-	
+
 	@FindBy(xpath = "//button[contains(text(),'Sepete git')]")
 	public WebElement goToTheCart;
 

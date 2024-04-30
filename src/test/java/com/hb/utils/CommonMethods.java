@@ -50,6 +50,10 @@ public class CommonMethods extends PageInitializer {
 		getJSObject().executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
+	public static void scrollToTop() {
+		
+		getJSObject().executeScript("window.scrollTo(0, 0);");
+	}
 	public static void jsClick(WebElement element) {
 
 		getJSObject().executeScript("arguments[0].click()", element);
@@ -59,8 +63,25 @@ public class CommonMethods extends PageInitializer {
 
 		sendText(mainPage.searchBox, productName);
 		click(mainPage.searchButton);
-		wait(1);
+		wait(3);
 
+		scrollToElement(productDetailsPage.rating);
+		wait(5);
+
+		for (WebElement checkbox : productDetailsPage.checkboxes) {
+			if (checkbox.getAttribute("value").equals("1-max")) {
+				if (!checkbox.isSelected()) {
+					checkbox.click();
+				}
+				break;
+			}
+		}
+
+		wait(2);
+		
+		scrollToTop();
+		wait(2);
+		
 		List<WebElement> productResults = mainPage.productsResult;
 		Random rand = new Random();
 		WebElement randomProduct = productResults.get(rand.nextInt(productResults.size()));
@@ -85,11 +106,21 @@ public class CommonMethods extends PageInitializer {
 
 	public void selectRandomEvaluation() {
 
-		List<WebElement> evaluationButton = productDetailsPage.evaluationButtons;
-		Random random = new Random();
-		int randomIndex = random.nextInt(evaluationButton.size());
-		WebElement randomButton = evaluationButton.get(randomIndex);
-		randomButton.click();
+		String customerReviewText = productDetailsPage.customerReviewText.getText();
+
+		if (!customerReviewText.isEmpty()) {
+
+			List<WebElement> evaluationButton = productDetailsPage.evaluationButtons;
+			Random random = new Random();
+			int randomIndex = random.nextInt(evaluationButton.size());
+			WebElement randomButton = evaluationButton.get(randomIndex);
+			randomButton.click();
+
+		} else {
+
+			driver.quit();
+		}
+
 	}
 
 	public boolean checkThankYouMessage() {
@@ -159,6 +190,5 @@ public class CommonMethods extends PageInitializer {
 
 		return sdf.format(date);
 	}
-	
 
 }

@@ -8,5 +8,6 @@ Feature: Adding a Product To The Cart Functionality
 
   @smoke5
   Scenario: Adding a Product To The Cart
-    And User verifies product price and add the product to the cart and verifies that product orginal price is equal to product basket price
+    And user verifies product price and add the product to the cart 
+    Then user verifies that product orginal price is equal to product basket price
    

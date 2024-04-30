@@ -12,8 +12,6 @@ public class ProductEvaluationValidationSteps extends CommonMethods {
 	@When("user searches one of popular products and selects random product from products list")
 	public void user_searches_one_of_popular_products_and_selects_random_product_from_products_list() {
 
-		
-		
 		click(mainPage.searchBoxInputDiv);
 
 		searchAndSelectRandomProduct("iphone 15 pro max");
@@ -26,9 +24,8 @@ public class ProductEvaluationValidationSteps extends CommonMethods {
 		switchToWindow();
 		wait(5);
 
-		scrollToElement(productDetailsPage.reviwesTab);
-
 		if (productDetailsPage.ratingStar.isDisplayed()) {
+			scrollToElement(productDetailsPage.reviwesTab);
 			click(productDetailsPage.reviwesTab);
 		} else {
 			driver.quit();
@@ -44,11 +41,11 @@ public class ProductEvaluationValidationSteps extends CommonMethods {
 	@When("user select randomly either Thumbs Up or Thumbs Down")
 	public void user_select_randomly_either_thumbs_up_or_thumbs_down() {
 
-		//click(productDetailsPage.acceptCookies);
-		
+		// click(productDetailsPage.acceptCookies);
+
 		selectRandomEvaluation();
 		wait(10);
-		
+
 		takeScreenShot("verifyThankYouMessage");
 
 	}

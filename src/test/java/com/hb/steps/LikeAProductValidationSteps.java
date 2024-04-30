@@ -18,10 +18,20 @@ public class LikeAProductValidationSteps extends CommonMethods {
 		switchToWindow();
 		wait(10);
 
+		String likedButtonText = productDetailsPage.likeButton.getText();
+		
+		if(likedButtonText.equals("Beğen")) {
+			
 		click(productDetailsPage.likeButton);
 		wait(1);
-
 		takeScreenShot("LikedProduct");
+		
+		}else {
+			takeScreenShot("ProductAlreadyLiked");
+			driver.quit();
+		}
+
+		
 
 	}
 
